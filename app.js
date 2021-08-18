@@ -3,11 +3,13 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const path = require("path");
 const compression = require("compression");
+const cors = require("cors");
 
 // STEP 2: import the user route the one we just created
 const userRouter = require("./routes/userRoute");
 const viewRouter = require("./routes/viewRoute");
 
+app.use(cors());
 const app = express();
 app.enable("trust proxy");
 
