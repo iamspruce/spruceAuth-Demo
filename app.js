@@ -9,8 +9,8 @@ const cors = require("cors");
 const userRouter = require("./routes/userRoute");
 const viewRouter = require("./routes/viewRoute");
 
-app.use(cors());
 const app = express();
+app.use(cors());
 app.enable("trust proxy");
 
 // Tell express you are using Pug as your template engine
