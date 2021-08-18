@@ -83,7 +83,7 @@ exports.login = async (req, res, next) => {
     } else {
       const newUser = await User.create({
         me: newReq.data.me,
-        username: newReq.data.me.split("/")[2],
+        /* username: newReq.data.me.split("/")[2], */
       });
       createSendToken(newUser, 201, res);
     }

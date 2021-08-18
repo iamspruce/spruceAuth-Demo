@@ -2,6 +2,7 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const path = require("path");
+const compression = require("compression");
 
 // STEP 2: import the user route the one we just created
 const userRouter = require("./routes/userRoute");
@@ -28,5 +29,7 @@ app.use("/", viewRouter);
 app.all("*", (req, res, next) => {
   next(console.log(`${req.originalUrl} not found on this server`));
 });
+
+app.use(compression());
 
 module.exports = app;
