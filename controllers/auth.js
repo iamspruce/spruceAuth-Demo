@@ -8,25 +8,24 @@ const qs = require("qs");
 const User = require("./../model/user");
 
 // STEP 3: create a function to sign the Json Web Token and send it has a cookie
-const createSendToken = (user, statusCode, res) => {
+const createSendToken = (user, statusCode, req, res) => {
   // STEP 3.1: Sign the json web token and store it in a variable called token
   const id = user._id;
   const token = jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES,
   });
 
-  // STEP 3.2: Define cookie options
-  let cookieOptions = {
+  // STEP 3.2: Set cookie to secure only when we are in production
+  cookieOptions.secure = true;
+  // STEP 3.3: Send the cookie to the user
+  res.cookie("jwt", token, {
     expires: new Date(
       Date.now() + process.env.JWT_COOKIES_EXPIRES * 24 * 60 * 60 * 1000
     ),
     httpOnly: true,
-  };
-  // STEP 3.3: Set cookie to secure only when we are in production
-  if (process.env.NODE_ENV === "production") cookieOptions.secure = true;
-  // STEP 3.4: Send the cookie to the user
-  res.cookie("jwt", token, cookieOptions);
-  // STEP 3.5: Redirect us back to homepage
+    secure: req.secure || req.headers["x-forwarded-proto"] === "https",
+  });
+  // STEP 3.4: Redirect us back to homepage
   // Here you can send a response back to the user rather than redirecting
   res.status(statusCode).redirect("/");
 };
@@ -79,13 +78,13 @@ exports.login = async (req, res, next) => {
     // STEP 4.7: If the user already exists just call the createSendToken function we created at the beginning
     // else if the user dosen't exist then create the user
     if (user) {
-      createSendToken(user, 200, res);
+      createSendToken(user, 200, req, res);
     } else {
       const newUser = await User.create({
         me: newReq.data.me,
         /* username: newReq.data.me.split("/")[2], */
       });
-      createSendToken(newUser, 201, res);
+      createSendToken(newUser, 201, req, res);
     }
   } catch (err) {
     console.log(err);

@@ -9,6 +9,7 @@ const userRouter = require("./routes/userRoute");
 const viewRouter = require("./routes/viewRoute");
 
 const app = express();
+app.enable("trust proxy");
 
 // Tell express you are using Pug as your template engine
 app.set("view engine", "pug");
