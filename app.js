@@ -25,8 +25,8 @@ app.use(express.json({ limit: "10kb" }));
 app.use(cookieParser());
 
 //STEP 4: Call the userRoute and viewRoute
-app.use("/api/users", userRouter);
-app.use("/", viewRouter);
+app.use("api/users", userRouter);
+app.use("", viewRouter);
 
 // STEP 5: (optional) when will hit a route not defined throw an error
 app.all("*", (req, res, next) => {
