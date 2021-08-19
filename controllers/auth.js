@@ -59,7 +59,7 @@ exports.login = async (req, res, next) => {
     const data = qs.stringify({
       code,
       redirect_uri: "https://indie.iamspruce.dev/api/users/login/",
-      client_id: "https://indie.iamspruce.dev/",
+      client_id: "https://indie.iamspruce.dev",
     });
     const headers = {
       "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
