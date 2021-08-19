@@ -26,8 +26,8 @@ html(lang="en")
             p Enter Your Domain name in the form below to test the Indielogin.com Authentication
           label.screen-reader-text(for="url") login to formzilla
           input(id="url" type="url" name="me" placeholder="http://yourdomain.com" required)
-          input(type="hidden" name="redirect_uri" value="https://indielogin.heroku.com/api/users/login/")
-          input(type="hidden" name="client_id" value="https://indielogin.heroku.com")
+          input(type="hidden" name="redirect_uri" value="https://indielogin.herokuapp.com/api/users/login/")
+          input(type="hidden" name="client_id" value="https://indielogin.herokuapp.com")
           input(type="hidden" name="state" value="jwiusuerujs")
           button(type="submit") Sign In With Your Domain
       footer.footer

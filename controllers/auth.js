@@ -58,8 +58,8 @@ exports.login = async (req, res, next) => {
     // STEP: 4.5.1: define the data and the header
     const data = qs.stringify({
       code,
-      redirect_uri: "https://indielogin.heroku.com/api/users/login/",
-      client_id: "https://indielogin.heroku.com/",
+      redirect_uri: "https://indielogin.herokuapp.com/api/users/login/",
+      client_id: "https://indielogin.herokuapp.com/",
     });
     const headers = {
       "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
