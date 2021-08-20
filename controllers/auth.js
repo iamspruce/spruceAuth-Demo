@@ -67,7 +67,7 @@ exports.login = async (req, res, next) => {
     };
     // STEP 4.5.2: make a post request to `https://indielogin.com/auth` with the data and the header
     const newReq = await axios.post(
-      "https://indielogin.com/auth",
+      "http://localhost:5000/auth",
       data,
       headers
     );
