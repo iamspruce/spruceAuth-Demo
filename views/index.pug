@@ -4,7 +4,7 @@ html(lang="en")
     meta(charset="utf-8")
     meta(http-equiv="X-UA-Compatible" content="IE=edge")
     meta(name="viewport" content="width=device-width,initial-scale=1")
-    title IndieLogin Demo | #{title}
+    title spruceAuth Demo | #{title}
     link(rel="stylesheet" href="/css/style.css")
   body
     .wrapper 
@@ -16,10 +16,10 @@ html(lang="en")
             p You found me, I created this as a demo for IndieLogin.com user authentication with NodeJs -> Express -> MongoDB 
             p(style="margin-bottom: 2rem;") In 2 minutes time your domain name would be deleted from our Database(No hard feelings, this is a demo) Although you can restart the process again
       else 
-        form.header(action="https://indielogin.com/auth" method="get")
+        form.header(action="https://indie.iamspruce.dev/auth" method="get")
           div
             h1 Welcome Dear Internet Friend
-            p Enter Your Domain name in the form below to test the Indielogin.com Authentication
+            p Enter Your Domain name in the form below to test the spruceAuth Authentication
           label.screen-reader-text(for="url") login to formzilla
           input(id="url" type="url" name="me" placeholder="http://yourdomain.com" required)
           input(type="hidden" name="redirect_uri" value="http://localhost:4000/api/users/login/")
